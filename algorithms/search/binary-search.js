@@ -1,19 +1,20 @@
 const assert = require('assert');
 
-function binarySearch(array, value) {
+function binarySearch(sortedArray, value) {
   let lowerBound = 0;
-  let upperBound = array.length - 1;
+  let upperBound = sortedArray.length - 1;
   let count = 0;
 
   while (lowerBound <= upperBound) {
     let midpoint = Math.floor((upperBound + lowerBound) / 2);
+    const valueAtMidpoint = sortedArray[midpoint];
     count += 1;
 
-    if (value < array[midpoint]) {
+    if (value < valueAtMidpoint) {
       upperBound = midpoint - 1;
-    } else if (value > array[midpoint]) {
+    } else if (value > valueAtMidpoint) {
       lowerBound = midpoint + 1;
-    } else if (value === array[midpoint]) {
+    } else if (value === valueAtMidpoint) {
       console.log(`found in ${count} steps`);
       return midpoint;
     }
